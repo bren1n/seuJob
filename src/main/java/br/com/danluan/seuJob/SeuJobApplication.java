@@ -1,7 +1,9 @@
 package br.com.danluan.seuJob;
 
+import br.com.danluan.seuJob.model.Company;
 import br.com.danluan.seuJob.model.Resume;
 import br.com.danluan.seuJob.model.User;
+import br.com.danluan.seuJob.repository.CompanyRepository;
 import br.com.danluan.seuJob.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +17,9 @@ public class SeuJobApplication {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	CompanyRepository companyRepository;
+
 	@Bean
 	public CommandLineRunner init() {
 		return args -> {
@@ -26,6 +31,9 @@ public class SeuJobApplication {
 			Resume resume = new Resume("Java Developer", "IMD", "Java, Spring, Hibernate");
 			user.setResume(resume);
 			userRepository.save(user);
+
+			Company company = new Company("Empresa teste", "teste@teste.com", "1234", "(63) 3243-7746");
+			companyRepository.save(company);
 		};
 
 	}

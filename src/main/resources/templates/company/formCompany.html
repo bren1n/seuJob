@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${action == 'create'}">Cadastrar empresa - SeuJOB</title>
+    <title th:if="${action == 'edit'}">Editar empresa - SeuJOB</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h3 th:if="${action == 'create'}">Cadastrar empresa</h3>
+<h3 th:if="${action == 'edit'}">Editar empresa</h3>
+<form th:object="${company}" th:action="${action == 'create' ? '/company/create' : '/company/edit/' + company.id}" method="post">
+    <div class="mb-3">
+        <label for="companyName" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="companyName" required th:field="*{name}">
+    </div>
+    <div class="mb-3">
+        <label for="companyEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="companyEmail" required th:field="*{email}">
+    </div>
+    <div class="mb-3">
+        <label for="companyPhone" class="form-label">Telefone</label>
+        <input type="tel" class="form-control" id="companyPhone" required onkeyup="handlePhone(event)" maxlength="15" th:field="*{phoneNumber}">
+    </div>
+    <div class="mb-3">
+        <label for="companyPassword" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="companyPassword" required th:field="*{password}">
+    </div>
+    <button type="submit" class="btn btn-primary" th:if="${action == 'create'}">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" th:if="${action == 'edit'}">Editar</button>
+</form>
+
+<script>
+    const handlePhone = (event) => {
+        let input = event.target
+        input.value = phoneMask(input.value)
+    }
+
+    const phoneMask = (value) => {
+        if (!value) return ""
+        value = value.replace(/\D/g,'')
+        value = value.replace(/(\d{2})(\d)/,"($1) $2")
+        value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+        return value
+    }
+</script>
+</body>
+</html>

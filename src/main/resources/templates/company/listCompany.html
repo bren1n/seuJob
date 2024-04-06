@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Empresas - SeuJOB</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h3>Empresas</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company: ${companies}">
+        <td th:text="${company.name}"></td>
+        <td th:text="${company.phoneNumber}"></td>
+        <td th:text="${company.email}"></td>
+        <td>
+            <a class="btn btn-secondary" th:href="@{'/company/form/' + ${company.id}}" role="button">Editar</a>
+            <a class="btn btn-danger" th:href="@{'/company/delete/' + ${company.id}}" role="button">Apagar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
