@@ -13,7 +13,7 @@ public class Job {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id", insertable = false, updatable = false)
+    @JoinColumn(name = "company_id")
     private Company company;
 
     @Column(nullable = false, length = 500)
