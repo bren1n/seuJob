@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public List<User> getUsers() {
         return userRepository.findAll();

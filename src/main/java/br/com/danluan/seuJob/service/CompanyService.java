@@ -11,7 +11,7 @@ import java.util.Optional;
 @Component
 public class CompanyService {
     @Autowired
-    CompanyRepository companyRepository;
+    private CompanyRepository companyRepository;
 
     public List<Company> getCompanies() {
         return companyRepository.findAll();

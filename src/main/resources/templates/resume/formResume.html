@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${action == 'create'}">Cadastrar currículo - SeuJOB</title>
+    <title th:if="${action == 'edit'}">Editar currículo - SeuJOB</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h3 th:if="${action == 'create'}">Cadastrar currículo</h3>
+<h3 th:if="${action == 'edit'}">Editar currículo</h3>
+<form th:object="${resume}" th:action="${action == 'create' ? '/resume/create' : '/resume/edit/' + resume.id}"
+      method="post">
+    <div class="mb-3" th:if="${action == 'create'}">
+        <label for="userSelect" class="form-label">Usuário</label>
+        <select th:field="*{user.id}" id="userSelect" class="form-select">
+            <option th:each="user: ${users}" th:value="${user.id}" th:text="${user.name}">
+        </select>
+    </div>
+    <div class="mb-3">
+        <div class="form-floating">
+            <textarea th:field="*{experiences}" class="form-control" id="resumeExperience" placeholder="Digite suas experiências"></textarea>
+            <label for="resumeExperience">Experiências</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-floating">
+            <textarea th:field="*{education}" class="form-control" id="resumeEducation" placeholder="Digite suas formações"></textarea>
+            <label for="resumeEducation">Formação</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-floating">
+            <textarea th:field="*{skills}" class="form-control" id="resumeSkills" placeholder="Digite suas habilidades"></textarea>
+            <label for="resumeSkills">Habilidades</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" th:if="${action == 'create'}">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" th:if="${action == 'edit'}">Editar</button>
+</form>
+</body>
+</html>

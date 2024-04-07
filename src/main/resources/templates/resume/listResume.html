@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Currículos - SeuJOB</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h3>Currículos</h3>
+<div class="text-center">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Usuário</th>
+            <th scope="col">Data de criação</th>
+            <th scope="col">Data de atualização</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="resume: ${resumes}">
+            <td th:text="${resume.user.name}"></td>
+            <td th:text="${resume.creationDate}"></td>
+            <td th:text="${resume.updateDate}"></td>
+            <td>
+                <a class="btn btn-secondary" th:href="@{'/resume/form/' + ${resume.id}}" role="button">Editar</a>
+                <a class="btn btn-danger" th:href="@{'/resume/delete/' + ${resume.id}}" role="button">Apagar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
