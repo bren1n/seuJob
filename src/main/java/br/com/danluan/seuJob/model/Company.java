@@ -15,7 +15,7 @@ public class Company {
     @Column(length = 100, unique = true)
     private String email;
 
-    @Column(name = "phone_number", length = 20)
+    @Column(name = "phone_number", length = 15)
     private String phoneNumber;
 
     @Column()

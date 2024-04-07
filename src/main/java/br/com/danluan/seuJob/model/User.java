@@ -20,14 +20,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(length = 100)
+    @Column(length = 15)
     private String phoneNumber;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "resume_id", referencedColumnName = "id")
     private Resume resume;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Application> applications;
 
     public User() {
@@ -37,10 +37,19 @@ public class User {
         this.name = name;
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String phoneNumber, String password) {
         this.name = name;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

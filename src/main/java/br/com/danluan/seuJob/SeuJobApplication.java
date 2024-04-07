@@ -29,8 +29,8 @@ public class SeuJobApplication {
 	@Bean
 	public CommandLineRunner init() {
 		return args -> {
-			User user = new User("Daniel", "dan@luan", "1234");
-			User user2 = new User("Brenin", "dan@luan", "124412");
+			User user = new User("Daniel", "dan@luan", "(63) 97112-2773", "1234");
+			User user2 = new User("Brenin", "bre@nin", "(92) 99738-4476", "124412");
 			Resume resume = new Resume("Java Developer", "IMD", "Java, Spring, Hibernate");
 			Resume resume2 = new Resume("Java Developer", "IMD", "Java, Spring, Hibernate");
 			user.setResume(resume);

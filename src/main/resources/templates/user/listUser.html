@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Empresas - SeuJOB</title>
+    <title>Usuários - SeuJOB</title>
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<h3>Empresas</h3>
+<h3>Usuários</h3>
 <div class="text-center">
     <table class="table">
         <thead>
@@ -18,18 +18,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="company: ${companies}">
-            <td th:text="${company.name}"></td>
-            <td th:text="${company.phoneNumber}"></td>
-            <td th:text="${company.email}"></td>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.phoneNumber}"></td>
+            <td th:text="${user.email}"></td>
             <td>
-                <a class="btn btn-secondary" th:href="@{'/company/form/' + ${company.id}}" role="button">Editar</a>
-                <a class="btn btn-danger" th:href="@{'/company/delete/' + ${company.id}}" role="button">Apagar</a>
+                <a class="btn btn-secondary" th:href="@{'/user/form/' + ${user.id}}" role="button">Editar</a>
+                <a class="btn btn-danger" th:href="@{'/user/delete/' + ${user.id}}" role="button">Apagar</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>
