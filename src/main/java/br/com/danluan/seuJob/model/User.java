@@ -2,6 +2,8 @@ package br.com.danluan.seuJob.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_user")
 public class User {
@@ -25,6 +27,8 @@ public class User {
     @JoinColumn(name = "resume_id", referencedColumnName = "id")
     private Resume resume;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Application> applications;
 
     public User() {
     }

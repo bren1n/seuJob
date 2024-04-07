@@ -1,6 +1,7 @@
 package br.com.danluan.seuJob.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -30,21 +31,77 @@ public class Job {
     @Column(nullable = false)
     private Float salary;
 
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "publication_date")
-    private Date publicationDate;
+    @Column(nullable = false, name = "publish_date", updatable = false)
+    private Date publishDate;
 
 
-    public Job(String title, String description, String location, String contractType, Float salary, Date publicationDate) {
+    public Job(String title, String description, String location, String contractType, Float salary) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.contractType = contractType;
         this.salary = salary;
-        this.publicationDate = publicationDate;
     }
 
     public Job() {
 
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(String contractType) {
+        this.contractType = contractType;
+    }
+
+    public Float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Float salary) {
+        this.salary = salary;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
     }
 }

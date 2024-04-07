@@ -9,16 +9,16 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String name;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(length = 100, unique = true)
     private String email;
 
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
-    @Column(nullable = false)
+    @Column()
     private String password;
 
     public Company() {
