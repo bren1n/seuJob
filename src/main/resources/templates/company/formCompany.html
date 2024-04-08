@@ -6,7 +6,7 @@
     <title th:if="${action == 'edit'}">Editar empresa - SeuJOB</title>
 </head>
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 <h3 th:if="${action == 'create'}">Cadastrar empresa</h3>
 <h3 th:if="${action == 'edit'}">Editar empresa</h3>
 <form th:object="${company}" th:action="${action == 'create' ? '/company/create' : '/company/edit/' + company.id}" method="post">

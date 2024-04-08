@@ -6,7 +6,7 @@
     <title th:if="${action == 'edit'}">Editar currículo - SeuJOB</title>
 </head>
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 <h3 th:if="${action == 'create'}">Cadastrar currículo</h3>
 <h3 th:if="${action == 'edit'}">Editar currículo</h3>
 <form th:object="${resume}" th:action="${action == 'create' ? '/resume/create' : '/resume/edit/' + resume.id}"

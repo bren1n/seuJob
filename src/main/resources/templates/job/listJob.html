@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vagas</title>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<h3>Vagas</h3>
+<div class="text-center">
+    <!-- form to filter -->
+    <div class="container mt-3">
+        <form th:action="@{/job/list}" method="get">
+            <div class="form-group">
+                <label for="title">Cargo:</label>
+                <input type="text" id="title" name="title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="location">Localização:</label>
+                <input type="text" id="location" name="location" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="salary">Salário:</label>
+                <input type="number" id="salary" name="salary" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="contractType">Contratação:</label>
+                <input type="text" id="contractType" name="contractType" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a th:href="@{/job/list}" class="btn btn-secondary">Clear</a>
+        </form>
+    </div>
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Cargo</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Salário</th>
+            <th scope="col">Contratação</th>
+            <th scope="col">Regime</th>
+            <th scope="col">Empresa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="job: ${jobs}">
+            <td th:text="${job.title}"></td>
+            <td th:text="${job.description}"></td>
+            <td th:text="${job.salary}"></td>
+            <td th:text="${job.contractType}"></td>
+            <td th:text="${job.location}"></td>
+            <td th:text="${job.company.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
