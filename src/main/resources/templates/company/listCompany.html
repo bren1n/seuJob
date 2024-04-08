@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Empresas - SeuJOB</title>
+    <title th:if="${action == 'create'}">Cadastrar empresa - SeuJOB</title>
+    <title th:if="${action == 'edit'}">Editar empresa - SeuJOB</title>
 </head>
 <body>
 <div th:replace="~{fragments/navbar :: navbar}"></div>

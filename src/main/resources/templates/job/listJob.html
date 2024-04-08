@@ -45,6 +45,7 @@
             <th scope="col">Contratação</th>
             <th scope="col">Regime</th>
             <th scope="col">Empresa</th>
+            <th scope="col">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -55,6 +56,11 @@
             <td th:text="${job.contractType}"></td>
             <td th:text="${job.location}"></td>
             <td th:text="${job.company.name}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{'/job/details/' + ${job.id}}" role="button">Ver mais</a>
+                <a class="btn btn-secondary" th:href="@{'/job/form/' + ${job.id}}" role="button">Editar</a>
+                <a class="btn btn-danger" th:href="@{'/job/delete/' + ${job.id}}" role="button">Apagar</a>
+            </td>
         </tr>
         </tbody>
     </table>

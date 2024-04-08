@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_job")
@@ -15,6 +16,9 @@ public class Job {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @OneToMany(mappedBy = "job")
+    private List<Application> applications;
 
     @Column(nullable = false, length = 500)
     private String title;
@@ -46,7 +50,10 @@ public class Job {
     }
 
     public Job() {
+    }
 
+    public Integer getId() {
+        return id;
     }
 
     public Company getCompany() {
@@ -101,7 +108,12 @@ public class Job {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public List<Application> getApplications() {
+        return applications;
     }
+
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
+
 }

@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadas</title>
+    <title th:if="${action == 'create'}">Cadastrar vaga - SeuJOB</title>
+    <title th:if="${action == 'edit'}">Editar vaga - SeuJOB</title>
 </head>
 <body>
-
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<h3 th:if="${action == 'create'}">Cadastrar vaga</h3>
+<h3 th:if="${action == 'edit'}">Editar vaga</h3>
+<form th:object="${job}" th:action="${action == 'create' ? '/job/create' : '/job/edit/' + job.id}" method="post">
+    <div class="mb-3">
+        <select class="form-select" aria-label="Default select example" th:field="*{company}">
+            <option selected value="-1">Selecione a empresa</option>
+            <option th:each="company: ${companies}" th:value="${company.id}" th:text="${company.name}"></option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="jobTitle" class="form-label">Cargo:</label>
+        <input type="text" class="form-control" id="jobTitle" required th:field="*{title}">
+    </div>
+    <div class="mb-3">
+        <label for="jobDescription" class="form-label">Descrição</label>
+        <input type="text" class="form-control" id="jobDescription" required th:field="*{description}">
+    </div>
+    <div class="mb-3">
+        <label for="jobSalary" class="form-label">Salário</label>
+        <input type="number" class="form-control" id="jobSalary" required th:field="*{salary}">
+    </div>
+    <div  class="mb-3">
+        <label for="jobContractType" class="form-label">Contratação</label>
+        <select class="form-select" id="jobContractType" aria-label="Default select example" th:field="*{contractType}">
+            <option selected value="CLT">CLT</option>
+            <option value="PJ">PJ</option>
+            <option value="Freelancer">Freelancer</option>
+        </select>
+    </div>
+    <div  class="mb-3">
+        <label for="jobLocation">Regime</label>
+        <select class="form-select" id="jobLocation" aria-label="Default select example" th:field="*{location}">
+            <option selected value="Presencial">Presencial</option>
+            <option value="Remoto">Remoto</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" th:if="${action == 'create'}">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" th:if="${action == 'edit'}">Editar</button>
+</form>
 </body>
 </html>

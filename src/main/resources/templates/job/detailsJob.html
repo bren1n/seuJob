@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${job.title}"></title>
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <h2 th:text="${job.title}"></h2>
+
+    <p th:text="'Descrição: ' + ${job.description}"></p>
+    <p th:text="'Salário: ' + ${job.salary}"></p>
+    <p th:text="'Contratação: ' + ${job.contractType}"></p>
+    <p th:text="'Regime: ' + ${job.location}"></p>
+    <p th:text="'Empresa: ' + ${job.company.name}"></p>
+
+</body>
+</html>

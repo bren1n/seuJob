@@ -23,10 +23,27 @@ public class JobService {
         return jobRepository.findAll();
     }
 
-    public Job getJobById(Integer id) {
+    public Job getJob(Integer id) {
         return jobRepository.findById(id).map(job
                 -> {
             return job;
         }).orElseThrow(() -> null);
+    }
+
+    public void createJob(Job job) {
+        jobRepository.save(job);
+    }
+
+    public void updateJob(Integer id, String title, String location, Float salary, String contractType) {
+        Job job = this.getJob(id);
+        job.setTitle(title);
+        job.setLocation(location);
+        job.setSalary(salary);
+        job.setContractType(contractType);
+        jobRepository.save(job);
+    }
+
+    public void deleteJob(Integer id) {
+        jobRepository.deleteById(id);
     }
 }
