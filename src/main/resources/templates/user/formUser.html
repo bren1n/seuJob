@@ -30,6 +30,7 @@
     <button type="submit" class="btn btn-primary" th:if="${action == 'create'}">Cadastrar</button>
     <button type="submit" class="btn btn-primary" th:if="${action == 'edit'}">Editar</button>
 </form>
+<div th:replace="~{fragments/footer :: footer}"></div>
 
 <script>
     const handlePhone = (event) => {
