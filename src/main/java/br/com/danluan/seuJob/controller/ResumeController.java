@@ -35,7 +35,7 @@ public class ResumeController {
             model.addAttribute("action", "edit");
         } else {
             model.addAttribute("resume", new Resume());
-            model.addAttribute("users", userService.getUsers());
+            model.addAttribute("users", userService.getUsersResumeNull());
             model.addAttribute("action", "create");
         }
 

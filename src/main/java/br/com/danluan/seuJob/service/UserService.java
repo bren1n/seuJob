@@ -16,6 +16,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public List<User> getUsersResumeNull() {
+        return userRepository.findAllByResumeIsNull();
+    }
     public User getUser(Integer id) {
         return userRepository.findById(id).map(user -> {
             return user;
