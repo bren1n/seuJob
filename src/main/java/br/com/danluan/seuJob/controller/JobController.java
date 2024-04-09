@@ -68,9 +68,9 @@ public class JobController {
     }
 
     @RequestMapping("/edit/{id}")
-    public String editJob(@ModelAttribute("job") Job job, @PathVariable int id) {
+    public String editJob(@ModelAttribute("job") Job job, @PathVariable Integer id) {
         jobService.updateJob(
-            job.getId(),
+            id,
             job.getTitle(),
             job.getLocation(),
             job.getSalary(),
@@ -81,7 +81,7 @@ public class JobController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String deleteJob(@PathVariable int id) {
+    public String deleteJob(@PathVariable Integer id) {
         jobService.deleteJob(id);
         return "redirect:/job/list";
     }

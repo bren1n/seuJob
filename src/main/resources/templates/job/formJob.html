@@ -10,7 +10,7 @@
 <h3 th:if="${action == 'create'}">Cadastrar vaga</h3>
 <h3 th:if="${action == 'edit'}">Editar vaga</h3>
 <form th:object="${job}" th:action="${action == 'create' ? '/job/create' : '/job/edit/' + job.id}" method="post">
-    <div class="mb-3">
+    <div th:if="${action == 'create'}" class="mb-3">
         <select class="form-select" aria-label="Default select example" th:field="*{company}">
             <option selected value="-1">Selecione a empresa</option>
             <option th:each="company: ${companies}" th:value="${company.id}" th:text="${company.name}"></option>
