@@ -14,5 +14,7 @@
     <p th:text="'Regime: ' + ${job.location}"></p>
     <p th:text="'Empresa: ' + ${job.company.name}"></p>
 
-</body>
+    <p th:text="'Numero de inscrições:' + ${applicationsSize}"></p>
+    <a class="btn btn-primary" th:href="@{'/application/form/' + ${job.id}}" role="button">Candidatar-se</a></body>
+
 </html>

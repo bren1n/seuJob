@@ -2,6 +2,7 @@ package br.com.danluan.seuJob.controller;
 
 import br.com.danluan.seuJob.model.Job;
 import br.com.danluan.seuJob.model.User;
+import br.com.danluan.seuJob.service.ApplicationService;
 import br.com.danluan.seuJob.service.CompanyService;
 import br.com.danluan.seuJob.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class JobController {
     @Autowired
     private CompanyService companyService;
 
+    @Autowired
+    private ApplicationService applicationService;
+
     @RequestMapping("/list")
     public String listJob(Model model,
                           @RequestParam(required = false, defaultValue = "") String title ,
@@ -43,6 +47,7 @@ public class JobController {
     @RequestMapping("/details/{id}")
     public String detailsJob(@PathVariable int id, Model model) {
         model.addAttribute("job", jobService.getJob(id));
+        model.addAttribute("applicationsSize", applicationService.lengthApplicationsByJobId(id));
         return "job/detailsJob";
     }
 

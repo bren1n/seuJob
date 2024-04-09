@@ -46,6 +46,7 @@
             <th scope="col">Regime</th>
             <th scope="col">Empresa</th>
             <th scope="col">Ações</th>
+            <th scope="col">Candidatar-se</th>
         </tr>
         </thead>
         <tbody>
@@ -60,6 +61,9 @@
                 <a class="btn btn-primary" th:href="@{'/job/details/' + ${job.id}}" role="button">Ver mais</a>
                 <a class="btn btn-secondary" th:href="@{'/job/form/' + ${job.id}}" role="button">Editar</a>
                 <a class="btn btn-danger" th:href="@{'/job/delete/' + ${job.id}}" role="button">Apagar</a>
+            </td>
+            <td>
+                <a class="btn btn-primary" th:href="@{'/application/form/' + ${job.id}}" role="button">Candidatar-se</a>
             </td>
         </tr>
         </tbody>

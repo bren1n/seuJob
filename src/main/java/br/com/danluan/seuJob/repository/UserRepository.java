@@ -13,5 +13,8 @@ public interface UserRepository extends JpaRepository<User, Integer>{
             "FROM TB_USER AS A " +
             "WHERE A.RESUME_ID IS NULL",
             nativeQuery = true)
-    public List<User> findAllByResumeIsNull();
+   List<User> findAllByResumeIsNull();
+
+    @Query(value = "SELECT A.* FROM TB_USER AS A WHERE ID NOT IN ( SELECT B.USER_ID FROM TB_APPLICATION AS B WHERE B.JOB_ID = :id ); ", nativeQuery = true)
+    List<User> findAllBAppliedByJobId(Integer id);
 }

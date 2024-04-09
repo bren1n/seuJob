@@ -1,5 +1,6 @@
 package br.com.danluan.seuJob.model;
 
+import br.com.danluan.seuJob.enumerations.ApplicationStatus;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -22,7 +23,7 @@ public class Application {
     private User user;
 
     @Column()
-    private String status;
+    private ApplicationStatus status;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -35,7 +36,6 @@ public class Application {
     public Application(Job job, User user) {
         this.job = job;
         this.user = user;
-        this.status = status;
     }
 
 
@@ -55,11 +55,11 @@ public class Application {
         this.user = user;
     }
 
-    public String getStatus() {
+    public ApplicationStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ApplicationStatus status) {
         this.status = status;
     }
 }

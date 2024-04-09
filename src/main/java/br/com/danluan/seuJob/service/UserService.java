@@ -2,6 +2,7 @@ package br.com.danluan.seuJob.service;
 
 import br.com.danluan.seuJob.model.User;
 import br.com.danluan.seuJob.repository.UserRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +17,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public List<User> getUsersAppliedJobById(Integer id) {
+        return userRepository.findAllBAppliedByJobId(id);
+    }
     public List<User> getUsersResumeNull() {
         return userRepository.findAllByResumeIsNull();
     }
+
     public User getUser(Integer id) {
         return userRepository.findById(id).map(user -> {
             return user;

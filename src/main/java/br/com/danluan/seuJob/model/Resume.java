@@ -14,9 +14,6 @@ public class Resume {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    private User user;
-
     @OneToOne(mappedBy = "resume", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "aluno_id")
     private User user;
