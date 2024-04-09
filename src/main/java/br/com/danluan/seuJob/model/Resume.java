@@ -15,7 +15,7 @@ public class Resume {
     private Integer id;
 
     @OneToOne(mappedBy = "resume", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "aluno_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @Column(nullable = false, length = 500)

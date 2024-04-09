@@ -6,13 +6,16 @@
 </head>
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h1 style="text-align: center">
-        <section>
-            <h1>Seja bem-vindo ao SeuJOB</h1>
+    <section id="main-page">
+        <div class="main-page-info">
+            <h1 class="main-page-title">Seja bem-vindo ao</h1>
+            <img th:src="@{images/seujob-horizon.png}" alt="">
+        </div>
+        <div class="main-page-info">
             <p>Aqui te ajudamos a encontrar seu novo JOB.</p>
+        </div>
 
-        </section>
-    </h1>
+    </section>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

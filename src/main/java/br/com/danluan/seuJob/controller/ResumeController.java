@@ -4,6 +4,7 @@ import br.com.danluan.seuJob.model.Resume;
 import br.com.danluan.seuJob.service.ResumeService;
 import br.com.danluan.seuJob.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,7 +45,9 @@ public class ResumeController {
 
     @RequestMapping("/create")
     public String createResume(@ModelAttribute("resume") Resume resume) {
-        resumeService.createResume(resume);
+        System.out.println("aqui - - - - - " +  resume.getUser().getId());
+        resume.setUser(userService.getUser(resume.getUser().getId()));
+        userService.updateUserResume(resume.getUser().getId(), resume);
         return "redirect:/resume/list";
     }
 

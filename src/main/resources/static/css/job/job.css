@@ -1,0 +1,20 @@
+.job-form {
+    max-width: 90%;
+    margin: 0 auto
+}
+
+.form-group {
+    width: 20%;
+}
+
+.form-label {
+    font-size: 14px;
+    margin-bottom: .2rem !important;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+}

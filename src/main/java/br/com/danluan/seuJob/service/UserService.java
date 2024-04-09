@@ -1,5 +1,6 @@
 package br.com.danluan.seuJob.service;
 
+import br.com.danluan.seuJob.model.Resume;
 import br.com.danluan.seuJob.model.User;
 import br.com.danluan.seuJob.repository.UserRepository;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -45,5 +46,11 @@ public class UserService {
 
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    public void updateUserResume(Integer id, Resume resume) {
+        User user = this.getUser(id);
+        user.setResume(resume);
+        userRepository.save(user);
     }
 }

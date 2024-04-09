@@ -11,7 +11,7 @@
     <form th:object="${application}" th:action="${'/application/create/' + job.id}" method="post">
         <div class="mb-3">
             <label for="userSelected" class="form-label">Usuário</label>
-            <select id="userSelected" class="form-select" th:field="*{user.id}">
+            <select id="userSelected" class="form-select" th:field="*{user.id}" required>
                 <option th:each="user: ${users}" th:value="${user.id}" th:text="${user.name}"></option>
             </select>
         </div>

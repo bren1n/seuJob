@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${job.title}"></title>
+    <link rel="stylesheet" th:href="@{/css/job/jobDetails.css}">
 </head>
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h2 th:text="${job.title}"></h2>
+    <h3>Descrição de Vaga</h3>
 
-    <p th:text="'Descrição: ' + ${job.description}"></p>
-    <p th:text="'Salário: ' + ${job.salary}"></p>
-    <p th:text="'Contratação: ' + ${job.contractType}"></p>
-    <p th:text="'Regime: ' + ${job.location}"></p>
-    <p th:text="'Empresa: ' + ${job.company.name}"></p>
-
-    <p th:text="'Numero de inscrições:' + ${applicationsSize}"></p>
-    <a class="btn btn-primary" th:href="@{'/application/form/' + ${job.id}}" role="button">Candidatar-se</a></body>
+    <div class="job-details-container">
+        <h4 th:text="${job.title}"></h4>
+        <p th:text="'Descrição: ' + ${job.description}"></p>
+        <p th:text="'Salário: R$ ' + ${job.salary}"></p>
+        <p th:text="'Contratação: ' + ${job.contractType}"></p>
+        <p th:text="'Regime: ' + ${job.location}"></p>
+        <p th:text="'Empresa: ' + ${job.company.name}"></p>
+        <p th:text="'Numero de inscrições: ' + ${applicationsSize}"></p>
+        <a class="btn btn-primary" th:href="@{'/application/form/' + ${job.id}}" role="button">Candidatar-se</a>
+    </div>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
 </html>

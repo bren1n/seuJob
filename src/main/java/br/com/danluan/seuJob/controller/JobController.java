@@ -37,6 +37,11 @@ public class JobController {
         List<Job> jobs;
         if (title != null || location != null || (salary != null && salary > 0) || contractType != null) {
             jobs = jobService.getJobsFiltered(title, location, salary, contractType);
+            model.addAttribute("title", title);
+            model.addAttribute("location", location);
+            model.addAttribute("salary", salary);
+            model.addAttribute("contractType", contractType);
+
         } else {
             jobs = jobService.findAllJobs();
         }

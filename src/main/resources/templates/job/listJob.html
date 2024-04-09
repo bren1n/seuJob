@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Vagas - SeuJOB</title>
+    <link rel="stylesheet" th:href="@{/css/job/job.css}">
 </head>
 <body>
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-<h3>Vagas</h3>
-<div class="text-center">
+<h3 class="text-center">Vagas abertas</h3>
+<div class="">
     <!-- form to filter -->
     <div class="container mt-3">
-        <form th:action="@{/job/list}" method="get">
-            <div class="form-group">
-                <label for="title">Cargo:</label>
-                <input type="text" id="title" name="title" class="form-control" />
+        <form th:action="@{/job/list}" method="get" class="job-form">
+            <div class="form-fields">
+                <div class="form-group">
+                    <label class="form-label" for="title">Cargo:</label>
+                    <input type="text" id="title" name="title" class="form-control" th:value="${title}" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label " for="location">Regime:</label>
+                    <select name="location" class="form-select" id="location" aria-label="Default select example">
+                        <option selected value=""></option>
+                        <option th:value="Presencial" th:selected="${location == 'Presencial'}">Presencial</option>
+                        <option th:value="Remoto" th:selected="${location == 'Remoto'}">Remoto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="salary">Salário</label>
+                    <input type="number" id="salary" name="salary" class="form-control" th:value="${salary}"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="contractType">Contratação:</label>
+                    <select name="contractType" class="form-select" id="contractType" aria-label="Default select example">
+                        <option selected value=""></option>
+                        <option th:value="CLT" th:selected="${contractType == 'CLT'}">CLT</option>
+                        <option th:value="PJ" th:selected="${contractType == 'PJ'}">PJ</option>
+                        <option th:value="Freelancer" th:selected="${contractType == 'Freelancer'}">Freelancer</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="location">Localização:</label>
-                <input type="text" id="location" name="location" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="salary">Salário:</label>
-                <input type="number" id="salary" name="salary" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="contractType">Contratação:</label>
-                <input type="text" id="contractType" name="contractType" class="form-control" />
-            </div>
-
             <button type="submit" class="btn btn-primary">Buscar</button>
             <a th:href="@{/job/list}" class="btn btn-secondary">Clear</a>
         </form>
     </div>
 
-
-
-    <table class="table">
+    <table class="table text-center">
         <thead>
         <tr>
             <th scope="col">Cargo</th>
-            <th scope="col">Descrição</th>
             <th scope="col">Salário</th>
             <th scope="col">Contratação</th>
             <th scope="col">Regime</th>
@@ -52,18 +60,17 @@
         <tbody>
         <tr th:each="job: ${jobs}">
             <td th:text="${job.title}"></td>
-            <td th:text="${job.description}"></td>
             <td th:text="${job.salary}"></td>
             <td th:text="${job.contractType}"></td>
             <td th:text="${job.location}"></td>
             <td th:text="${job.company.name}"></td>
             <td>
-                <a class="btn btn-primary" th:href="@{'/job/details/' + ${job.id}}" role="button">Ver mais</a>
-                <a class="btn btn-secondary" th:href="@{'/job/form/' + ${job.id}}" role="button">Editar</a>
-                <a class="btn btn-danger" th:href="@{'/job/delete/' + ${job.id}}" role="button">Apagar</a>
+                <a class="btn btn-primary" th:href="@{'/job/details/' + ${job.id}}" role="button"><i class="ph ph-article"></i></a>
+                <a class="btn btn-secondary" th:href="@{'/job/form/' + ${job.id}}" role="button"><i class="ph ph-pencil"></i></a>
+                <a class="btn btn-danger" th:href="@{'/job/delete/' + ${job.id}}" role="button"><i class="ph ph-trash"></i></a>
             </td>
             <td>
-                <a class="btn btn-primary" th:href="@{'/application/form/' + ${job.id}}" role="button">Candidatar-se</a>
+                <a class="btn btn-primary" th:href="@{'/application/form/' + ${job.id}}" role="button"><i class="ph ph-file-text"></i></a>
             </td>
         </tr>
         </tbody>

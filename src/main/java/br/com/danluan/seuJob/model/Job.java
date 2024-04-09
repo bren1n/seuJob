@@ -17,7 +17,7 @@ public class Job {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @OneToMany(mappedBy = "job")
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Application> applications;
 
     @Column(nullable = false, length = 500)

@@ -24,8 +24,8 @@
             <td th:text="${company.phoneNumber}"></td>
             <td th:text="${company.email}"></td>
             <td>
-                <a class="btn btn-secondary" th:href="@{'/company/form/' + ${company.id}}" role="button">Editar</a>
-                <a class="btn btn-danger" th:href="@{'/company/delete/' + ${company.id}}" role="button">Apagar</a>
+                <a class="btn btn-secondary" th:href="@{'/company/form/' + ${company.id}}" role="button"><i class="ph ph-pencil"></i></a>
+                <a class="btn btn-danger" th:href="@{'/company/delete/' + ${company.id}}" role="button"><i class="ph ph-trash"></i></a>
             </td>
         </tr>
         </tbody>
